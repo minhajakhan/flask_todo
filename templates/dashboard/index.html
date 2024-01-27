@@ -49,30 +49,16 @@
             </div>
         </div>
     </div>
+    {% for todo in todo_list %}
     <div class="border-start border-5 mt-3 shadow">
         <div class="card-body">
-            <h5>1 | Learn Python</h5>
+            <h5> {{ todo.id }} | {{ todo.title }}</h5>
             <span class="badge bg-success">Complete</span>
             <a class="btn btn-info btn-sm" href="">Update</a>
             <a class="btn btn-danger btn-sm" href="">Delete</a>
         </div>
     </div>
-    <div class="border-start border-5 mt-3 shadow">
-        <div class="card-body">
-            <h5>1 | Learn Python</h5>
-            <span class="badge bg-success">Complete</span>
-            <a class="btn btn-info btn-sm" href="">Update</a>
-            <a class="btn btn-danger btn-sm" href="">Delete</a>
-        </div>
-    </div>
-    <div class="border-start border-5 mt-3 shadow">
-        <div class="card-body">
-            <h5>1 | Learn Python</h5>
-            <span class="badge bg-success">Complete</span>
-            <a class="btn btn-info btn-sm" href="">Update</a>
-            <a class="btn btn-danger btn-sm" href="">Delete</a>
-        </div>
+    {% endfor %}
     </div>
 </div>
-
 {% endblock %}
