@@ -12,7 +12,7 @@
                             <div class="card shadow">
                                 <div class="card-body">
                                     <h6>Total</h6>
-                                    <p class="text-center">10</p>
+                                    <p class="text-center">{{ total_todo }}</p>
                                 </div>
                             </div>
                         </div>
@@ -20,7 +20,7 @@
                             <div class="card shadow">
                                 <div class="card-body">
                                     <h6>Completed</h6>
-                                    <p class="text-center">5</p>
+                                    <p class="text-center">{{ completed_todo }}</p>
                                 </div>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                             <div class="card shadow">
                                 <div class="card-body">
                                     <h6>Incomplete</h6>
-                                    <p class="text-center">5</p>
+                                    <p class="text-center">{{ uncompleted_todo }}</p>
                                 </div>
                             </div>
                         </div>
@@ -49,13 +49,21 @@
             </div>
         </div>
     </div>
+
+    {% if total_todo == 0 %}
+    <marquee class="mt-3 display-5" behavior="" direction="">No Todo in Database. . . Create new Todo in Todo form</marquee>
+    {% endif %} <br />
     {% for todo in todo_list %}
     <div class="border-start border-5 mt-3 shadow">
         <div class="card-body">
             <h5> {{ todo.id }} | {{ todo.title }}</h5>
-            <span class="badge bg-success">Complete</span>
-            <a class="btn btn-info btn-sm" href="">Update</a>
-            <a class="btn btn-danger btn-sm" href="">Delete</a>
+            {% if todo.complete %}
+            <span class="badge bg-success">Completed</span>
+            {% else %}
+            <span class="badge bg-secondary">Incomplete</span>
+            {% endif %}
+            <a class="btn btn-info btn-sm" href="/update/{{ todo.id }}">Update</a>
+            <a class="btn btn-danger btn-sm" href="/delete/{{ todo.id }}">Delete</a>
         </div>
     </div>
     {% endfor %}
